@@ -1,5 +1,5 @@
 export interface Phone {
-  id?: number | string;
+  id?: string;
   model: string;
-  phone: number | string;
+  phone: string;
 }

@@ -3,13 +3,12 @@ import {
   Delete,
   Get,
   Param,
-  ParseUUIDPipe,
   Patch,
   Post,
   Body,
-  ParseIntPipe,
+  ParseUUIDPipe,
 } from '@nestjs/common';
-import { CreatePhoneDto } from './dto/create-phone.dto';
+import { CreatePhoneDto, UpdatePhoneDto } from './dto/index';
 import { PhonesService } from './phones.service';
 
 @Controller('phones')
@@ -21,7 +20,7 @@ export class PhonesController {
   }
 
   @Get(':id')
-  getPhonesById(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string) {
+  getPhonesById(@Param('id', ParseUUIDPipe) id: string) {
     return this.phonesService.findByOnePhone(id);
   }
   @Post()
@@ -30,15 +29,15 @@ export class PhonesController {
   }
 
   @Patch(':id')
-  updatePhone(@Param('id', ParseIntPipe) id: number, @Body() body: any) {
+  updatePhone(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() body: UpdatePhoneDto,
+  ) {
     return body;
   }
 
   @Delete(':id')
-  deletePhone(@Param('id') id: string) {
-    return {
-      method: 'delete',
-      id,
-    };
+  deletePhone(@Param('id', ParseUUIDPipe) id: string) {
+    return this.phonesService.delete(id);
   }
 }
