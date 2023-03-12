@@ -8,7 +8,7 @@ async function bootstrap() {
     new ValidationPipe({
       //Esto valida que no le mande data basura por el body ej en el post y lo limpia
       whitelist: true,
-      //Esto no permite mandar propiedades demas y da un bad request un 400
+      //Esto no permite mandar propiedades demas o que no esten  y da un bad request un 400
       forbidNonWhitelisted: true,
     }),
   );
