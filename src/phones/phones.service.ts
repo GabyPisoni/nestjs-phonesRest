@@ -40,7 +40,7 @@ export class PhonesService {
   }
   create(createPhoneDto: CreatePhoneDto) {
     const phone: Phone = {
-      id: uuidv4(),
+      // id: uuidv4(),
       ...createPhoneDto,
     };
 
@@ -71,5 +71,8 @@ export class PhonesService {
     this.findByOnePhone(id);
     this.phones = this.phones.filter((element) => id !== element.id);
     return this.phones;
+  }
+  fillPhonesIthSeedData(phones:Phone[]){
+    this.phones = phones;
   }
 }
