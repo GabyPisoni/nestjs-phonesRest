@@ -15,7 +15,7 @@ constructor(private readonly phonesService: PhonesService,
     this.phonesService.fillPhonesIthSeedData(PHONES_SEED)
     this.brandsService.fillBrandsIthSeedData(BRANDS_SEED)
 
-    return;
+    return "Datos Cargados";
 
   }
 }
