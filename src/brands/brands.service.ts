@@ -55,7 +55,7 @@ export class BrandsService {
     })
     return this.brands
   }
-  fillPhonesIthSeedData(brands:Brand[]){
+  fillBrandsIthSeedData(brands:Brand[]){
     this.brands = brands;
   }
 }
